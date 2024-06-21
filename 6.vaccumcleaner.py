@@ -1,31 +1,44 @@
-print("vaccum cleaner")
-class VacuumCleaner:
-    def __init__(self, environment):
-        self.environment = environment
-        self.position = 0
 
-    def move(self):
-        if self.position < len(self.environment):
-            print("Moving to position", self.position)
-            self.clean()
-            self.position += 1
+import random
 
-    def clean(self):
-        if self.position < len(self.environment):
-            if self.environment[self.position] == 'dirty':
-                print("Cleaning dirty square at position", self.position)
-                self.environment[self.position] = 'clean'
-            else:
-                print("Square at position", self.position, "is already clean")
+def display(room):
+    print(room)
 
+room = [
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+]
+print("All the rooom are dirty")
+display(room)
 
-def main():
-    environment = ['dirty', 'clean', 'dirty', 'clean', 'clean']
-    cleaner = VacuumCleaner(environment)
+x =0
+y= 0
 
-    print("Initial environment:", environment)
+while x < 4:
+    while y < 4:
+        room[x][y] = random.choice([0,1])
+        y+=1
+    x+=1
+    y=0
 
-    for _ in range(len(environment)):
-        cleaner.move()
-
-    print("Final environment:", environment)
+print("Before cleaning the room I detect all of these random dirts")
+display(room)
+x =0
+y= 0
+z=0
+while x < 4:
+    while y < 4:
+        if room[x][y] == 1:
+            print("Vaccum in this location now,",x, y)
+            room[x][y] = 0
+            print("cleaned", x, y)
+            z+=1
+        y+=1
+    x+=1
+    y=0
+pro= (100-((z/16)*100))
+print("Room is clean now, Thanks for using : 3710933")
+display(room)
+print('performance=',pro,'%')
